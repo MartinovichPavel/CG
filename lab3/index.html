@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segmentation</title>
+  <link rel="stylesheet" href="./index.css">
+  <script src="./index.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="canvasSide">
+        <canvas id="myCanvas" height="500" width="500"></canvas>
+        </div>
+        <div class="menuSide">
+        <div class="selectMenu">
+        <select id="selectOption" onchange="selectChange()">
+        <option selected>Step by step Line</option>
+        <option>BresenhamLine</option>
+        <option>DDA Line</option>
+        <option>BresenhamCircle</option>
+        <option>Vu</option>
+        </select>
+        <button onclick="run()">Draw</button>
+        </div>
+        <div class="textFields">
+        <div class="textField">
+        <label for="textInput1" id="textLabel1">x1:</label> 
+        <input type="text" id="textInput1" name="textInput1" value="0" oninput="restrictText(0)"/>
+        </div>
+        <div class="textField">
+        <label for="textInput3" id="textLabel3">x2:</label> 
+        <input type="text" id="textInput3" name="textInput3" value="0" oninput="restrictText(2)"/>
+        </div>
+        <div class="textField">
+        <label for="textInput2" id="textLabel2">y1:</label> 
+        <input type="text" id="textInput2" name="textInput2" value="0" oninput="restrictText(1)"/>
+        </div>
+        <div class="textField">
+        <label for="textInput4" id="textLabel4">y2:</label> 
+        <input type="text" id="textInput4" name="textInput4" value="0" oninput="restrictText(3)"/>
+        </div>
+        </div>
+        <div class="globalPar">
+        <div class="mySlider">
+        <label for="mySlider" id="scaleLabel">Scale: 24</label>
+        <input type="range" min="5" max="70" value="24" class="slider" id="mySlider" name="mySlider" oninput="changeScale()">
+        </div>
+        <div class="mySlider">
+        <label for="mySliderSleep" id="delayLabel">Delay: 0ms</label>
+        <input type="range" min="0" max="100" value="0" class="slider" id="mySliderSleep" name="mySliderSleep" oninput="changeDelay()">
+        </div>
+        </div>
+        <div class="logger">
+        <textarea rows="20" cols="60" id="log" disabled></textarea>>
+        </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,12 @@
+.container {
+    columns: 2 auto;
+}
+.textFields {
+    columns: 2;   
+}
+.mySlider {
+    display: inline-block;
+    columns: auto;
+    column-width: 100px;
+    width: 300px;
+}

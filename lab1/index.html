@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color picker</title>
+  <link rel="stylesheet" href="./index.css">
+  <script src="./index.js" defer></script>
+</head>
+<body>
+<div class="cp">
+      <input type="color" id="colorPicker" value="#000000" oninput="myColorPicker()" />
+      </div>
+      <div class="container">  
+      <div class="grid-item">   
+          <div class="wrapper">
+          <label for="textC">C:</label>
+            <input type="text" id="textC" oninput="myCtext()" value="0"/>
+            <input type="range" min="0" max="100" value="0" class="slider" id="sliderC" oninput="myCSlider()"/>
+            </div>
+              <div class="wrapper">
+              <label for="textM">M:</label>
+            <input type="text" id="textM" oninput="myMtext()" value="0"/>
+            <input type="range" min="0" max="100" value="0" class="slider" id="sliderM" oninput="myMSlider()"/>
+          </div>
+            
+            <div class="wrapper">
+            <label for="textY">Y:</label>
+            <input type="text" id="textY" oninput="myYtext()" value="0"/>
+            <input type="range" min="0" max="100" value="0" class="slider" id="sliderY" oninput="myYSlider()"/>
+          </div>
+            
+            <div class="wrapper">
+            <label for="textK">K:</label>
+            <input type="text" id="textK" oninput="myKtext()" value="100"/>
+            <input type="range" min="0" max="100" value="100" class="slider" id="sliderK" oninput="myKSlider()"/>
+          </div>
+        </div>
+        <div class="grid-item">
+        <div class="wrapper">
+        <label for="textY">R:</label>
+        <input type="text" id="textR" oninput="myRtext()" value="0"/>
+        <input type="range" min="0" max="255" value="0" class="slider" id="sliderR" oninput="myRSlider()"/>
+        </div>
+        <div class="wrapper">
+        <label for="textY">G:</label>
+        <input type="text" id="textG" oninput="myGtext()" value="0"/>
+        <input type="range" min="0" max="255" value="0" class="slider" id="sliderG" oninput="myGSlider()"/>
+        </div>
+        <div class="wrapper">
+        <label for="textY">B:</label>
+        <input type="text" id="textB" oninput="myBtext()" value="0"/>
+        <input type="range" min="0" max="255" value="0" class="slider" id="sliderB" oninput="myBSlider()"/>
+        </div>
+    </div>
+        <div class="grid-item">
+        <div class="wrapper">
+        <label for="textY">H:</label>
+        <input type="text" id="textH" oninput="myHtext()" value="0"/>
+        <input type="range" min="0" max="360" value="0" class="slider" id="sliderH" oninput="myHSlider()"/>
+        </div>
+        <div class="wrapper">
+        <label for="textY">S:</label>
+        <input type="text" id="textS" oninput="myStext()" value="0"/>
+        <input type="range" min="0" max="100" value="0" class="slider" id="sliderS" oninput="mySSlider()"/>
+        </div>
+        <div class="wrapper">
+        <label for="textY">V:</label>
+        <input type="text" id="textV" oninput="myVtext()" value="0"/>
+        <input type="range" min="0" max="100" value="0" class="slider" id="sliderV" oninput="myVSlider()"/>
+        </div>
+        </div>
+</body>
+</html>

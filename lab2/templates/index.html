@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segmentation</title>
+</head>
+<body>
+  <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: left;">
+    <h1>Segmentation</h1>
+    <div class="action">
+      <select id="selectT">
+        <option selected>Adaptive thresholding gaussian</option>
+        <option>Niblack thresholding</option>
+        <option>Dot detection</option>
+        <option>Line detection</option>
+        <option>Previtta gradient</option>
+        <option>Sobel gradient</option>
+        <option>Transform to JPEG and download</option>
+      </select>
+      <button id="imgButt", style = "cursor:pointer;">Choose image</button>
+    </div>
+    <div class="action" style="margin: 10px;">
+      <p id="Par">Coefficient for local thresholding(max value, box size(mod2=1), parameter)</p>
+     <input type="text" id="text1"/>
+     <input type="text" id="text2"/>
+     <input type="text" id="text3"/>
+    </div>
+    </div>
+    <div class="container2" style="display: inline-block; list-style: none; vertical-align: middle;">
+      <img id="right" alt="No Image"/>
+      <img id="left" alt="No Image"/> 
+      </div>
+</body>
+<script>
+        const imgButt = document.getElementById("imgButt");
+        imgButt.addEventListener('click', function() {
+          var selectMy=document.getElementById("selectT")
+          const index23 = selectMy.selectedIndex;
+          var input=document.createElement('input')
+           input.type='file'
+          input.onchange = e => { 
+            let imgElement = document.getElementById('right');
+            var file=e.target.files[0]
+            imgElement.src = URL.createObjectURL(file);
+            imgElement.onload = function() {
+              let data2=new FormData();
+              data2.append('renderIndex',index23);
+              data2.append('image',file);
+              if (index23<2) {
+                var value1=document.getElementById("text1").value
+                var value2=document.getElementById("text2").value
+                var value3=document.getElementById("text3").value
+                data2.append('text1',value1)
+                data2.append('text2',value2)
+                data2.append('text3',value3)
+              }
+              const response = fetch('./img', {
+                method: 'POST',
+                body: data2
+              } )
+              .then(response => response.blob())
+              .then((blob)=> {
+                var url=URL.createObjectURL(blob)
+                if (index23==6) {
+                  const downloadImage = document.createElement("a");
+                  document.body.appendChild(downloadImage);
+                  downloadImage.setAttribute("download", "image");
+                  downloadImage.href = url;
+                  downloadImage.click();
+                  downloadImage.remove();
+                }
+                let imgElement = document.getElementById('left');
+                imgElement.src=url
+              })
+            }
+            }
+          input.click()
+        })
+      </script>
+      <script>
+      const selectMy=document.getElementById("selectT")
+      const text1 = document.getElementById("text1");
+      const text2 = document.getElementById("text2");
+      const text3 = document.getElementById("text3");
+      const par=document.getElementById("Par");
+      const t1=text1.style.display
+      const t2=text2.style.display
+      const t3=text3.style.display
+      const p=par.style.display
+      selectMy.addEventListener('change', function() {
+        const index23 = selectMy.selectedIndex;
+        if (index23<2) {
+          text1.style.display=t1
+          text2.style.display=t2
+          text3.style.display=t3
+          par.style.display=p
+        } else {
+          text1.style.display="none"
+          text2.style.display="none"
+          text3.style.display="none"
+          par.style.display="none"
+        }
+      })
+      </script>
+</html>
